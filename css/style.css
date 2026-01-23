@@ -1,0 +1,394 @@
+/* ===============================
+   GENERAL STYLES
+   =============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Page One - Soft Pink */
+body.page-one {
+    background: linear-gradient(135deg, #FFB6D9 0%, #FFC0CB 100%);
+}
+
+/* Page Dare - Light Yellow */
+body.page-dare {
+    background: linear-gradient(135deg, #FFFFE0 0%, #FFFACD 100%);
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.content {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.gif {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 30px 0;
+    border-radius: 15px;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    min-width: 120px;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+    color: white;
+}
+
+.btn-yes:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #FF6B9D 0%, #FFC0CB 100%);
+    color: white;
+    border: none;
+}
+
+.btn-no:hover {
+    background: linear-gradient(135deg, #FF5A8C 0%, #FFB0BB 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+}
+
+.btn-yes-yes {
+    background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    min-width: 150px;
+}
+
+.btn-yes-yes:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+}
+
+/* ===============================
+   LETTER PAGE (POPUP STYLE)
+   =============================== */
+
+.page-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #FFB6D9 0%, #FFC0CB 100%);
+}
+
+/* Gift Box Styles for Letter Page */
+.gift-box-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    height: 250px;
+}
+
+.gift-box {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    animation: giftBounce 2s infinite ease-in-out;
+    cursor: pointer;
+}
+
+.gift-box-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.gift-ribbon {
+    position: absolute;
+    width: 25px;
+    height: 100%;
+    background: #FFD700;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+}
+
+.gift-bow {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #FFD700;
+    border-radius: 50%;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: bowRotate 3s infinite linear;
+}
+
+@keyframes giftBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes bowRotate {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+.letter-btn-wrap {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-gift-tap {
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-gift-tap:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 20, 147, 0.4);
+}
+
+/* Overlay */
+.page-letter .box__letter {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    z-index: 999;
+}
+
+/* Letter container */
+.page-letter .letter__border {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 720px;
+    height: 550px;
+    background: #fff;
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    display: none;
+    overflow: hidden;
+}
+
+/* Letter body */
+.page-letter .letter {
+    width: 100%;
+    height: 100%;
+    background: #fff8e4;
+    border-radius: 14px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Close button */
+.page-letter .close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+
+.page-letter .close:hover {
+    background: #f0f0f0;
+}
+
+/* Title */
+.page-letter .title__letter {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    font-weight: bold;
+    padding: 12px 8px;
+    margin: 0;
+}
+
+/* Content layout */
+.page-letter .content__letter {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* Left side */
+.page-letter .content__letter .left {
+    width: 40%;
+    padding: 10px;
+    border-right: 3px solid #FFD700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    gap: 8px;
+}
+
+.page-letter .content__letter .left .left-gif {
+    max-width: 98%;
+    height: auto;
+    max-height: 190px;
+    object-fit: contain;
+    opacity: 0;
+}
+
+/* Right side */
+.page-letter .content__letter .right {
+    width: 60%;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: flex-start;
+}
+
+/* Text */
+.page-letter .text__letter {
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.page-letter .animationOp {
+    animation: fadeIn 0.8s forwards !important;
+}
+
+.letter-small-gif {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    align-self: flex-end;
+    margin-top: auto;
+    padding: 5px;
+}
+
+.page-letter .text__letter p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+    word-wrap: break-word;
+    word-break: break-word;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.page-letter .text__letter p strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.love-text {
+    color: #FF1493;
+    font-weight: bold;
+}
+
+/* Animations */
+.page-letter .animationOp {
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .page-letter .letter__border {
+        height: 80vh;
+    }
+
+    .page-letter .content__letter {
+        flex-direction: column;
+    }
+
+    .page-letter .content__letter .left,
+    .page-letter .content__letter .right {
+        width: 100%;
+        border: none;
+    }
+
+    .page-letter .text__letter p {
+        font-size: 1rem;
+    }
+}
