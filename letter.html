@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Letter 💌</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
 
     <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -22,82 +27,119 @@
 
 <body class="page-letter">
 
-<div id="wrapper">
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
 
-    <!-- GIFT BOX ANIMATION -->
-    <div class="gift-box-wrapper">
-        <div class="gift-box">
-            <div class="gift-box-body"></div>
-            <div class="gift-ribbon"></div>
-            <div class="gift-bow"></div>
+    <!-- Sparkle Container -->
+    <div class="sparkle-container" id="sparkleContainer"></div>
+
+    <div id="wrapper">
+
+        <!-- GIFT BOX ANIMATION -->
+        <div class="gift-box-wrapper">
+            <div class="gift-box">
+                <div class="gift-box-body"></div>
+                <div class="gift-ribbon"></div>
+                <div class="gift-bow"></div>
+            </div>
         </div>
-    </div>
 
-    <!-- LETTER OPEN BUTTON -->
-    <div class="letter-btn-wrap">
-        <button id="btn__letter" class="btn-gift-tap">
-            TAP TO OPEN
-            <i class="fa-regular fa-envelope"></i>
-        </button>
-    </div>
+        <!-- LETTER OPEN BUTTON -->
+        <div class="letter-btn-wrap">
+            <button id="btn__letter" class="btn-gift-tap">
+                TAP TO OPEN
+                <i class="fa-regular fa-envelope"></i>
+            </button>
+        </div>
 
-    <!-- LETTER POPUP -->
-    <div class="box__letter">
-        <div class="letter__border">
+        <!-- LETTER POPUP -->
+        <div class="box__letter">
+            <div class="letter__border">
 
-            <!-- LETTER -->
-            <div class="letter">
+                <!-- LETTER -->
+                <div class="letter">
 
-                <!-- TITLE -->
-                <div class="title__letter"></div>
+                    <!-- TITLE -->
+                    <div class="title__letter"></div>
 
-                <!-- CONTENT -->
-                <div class="content__letter">
+                    <!-- CONTENT -->
+                    <div class="content__letter">
 
-                    <!-- LEFT -->
-                    <div class="left">
-                        <img
-                            id="heart__letter"
-                            src="https://media.giphy.com/media/YKUvclrGYmDKXwtphf/giphy.gif"
-                            alt="heart"
-                            class="left-gif"
-                        >
+                        <!-- LEFT -->
+                        <div class="left">
+                            <img id="heart__letter" src="https://media.giphy.com/media/YKUvclrGYmDKXwtphf/giphy.gif"
+                                alt="heart" class="left-gif">
 
-                        <img
-                            src="https://media.giphy.com/media/m85llaN7ZkFIHtURiC/giphy.gif"
-                            alt="love"
-                            class="left-gif"
-                        >
-                    </div>
-
-                    <!-- RIGHT -->
-                    <div class="right">
-                        <div class="text__letter">
-                            <p></p>
+                            <img src="https://media.giphy.com/media/m85llaN7ZkFIHtURiC/giphy.gif" alt="love"
+                                class="left-gif">
                         </div>
-                        
-                        <img
-                            src="assets/lettersmall.gif"
-                            alt="cute"
-                            class="letter-small-gif"
-                        >
+
+                        <!-- RIGHT -->
+                        <div class="right">
+                            <div class="text__letter">
+                                <p></p>
+                            </div>
+
+                            <img src="assets/lettersmall.gif" alt="cute" class="letter-small-gif">
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
 
-            <!-- CLOSE BUTTON -->
-            <div class="close">
-                <i class="fa-solid fa-xmark"></i>
-            </div>
+                <!-- CLOSE BUTTON -->
+                <div class="close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
 
+            </div>
         </div>
+
     </div>
 
-</div>
+    <!-- Confetti for celebration -->
+    <div class="confetti-container" id="confettiContainer"></div>
 
-<!-- LETTER JS -->
-<script src="js/letter.js"></script>
+    <!-- LETTER JS -->
+    <script src="js/letter.js"></script>
+
+    <script>
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['💕', '💖', '💗', '💝', '💘', '❤️', '💓', '💞', '🩷', '🤍', '🎀', '✨'];
+
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+                heart.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+                container.appendChild(heart);
+            }
+        }
+
+        // Create sparkles
+        function createSparkles() {
+            const container = document.getElementById('sparkleContainer');
+
+            for (let i = 0; i < 35; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                sparkle.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
+                container.appendChild(sparkle);
+            }
+        }
+
+        // Initialize effects
+        createFloatingHearts();
+        createSparkles();
+    </script>
 
 </body>
+
 </html>
